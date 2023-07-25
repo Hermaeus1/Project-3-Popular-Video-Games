@@ -1,0 +1,4 @@
+/* Altering the Date Values to be Standard Date Format, First Convert to unix then trim with Date Function/*
+SELECT Release_Date FROM Video_Games;
+UPDATE Video_Games
+Set Release_Date = date(datetime((Release_Date-25569)*86400,'unixepoch'))
