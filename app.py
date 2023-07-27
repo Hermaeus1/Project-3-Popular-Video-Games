@@ -84,6 +84,45 @@ def display_games_plays():
     # Return the games dictionary as JSON
     return jsonify(games_dict)
 
+#Below code pulls all the games titles, genres, and plays and sorts them by plays in numerical descending order filtering all games with less than 100 plays
+@app.route('/games/genrevsplays')
+#Define a new function
+def display_games_genrevsplays():
+    # Create a connection to the SQLite database
+    conn = sqlite3.connect('games.db')
+
+    # Query the 'games' table with any parameter you need
+    query = "SELECT Title, Genres, Plays FROM games WHERE Plays >= 100 ORDER BY Plays DESC;"
+    df = pd.read_sql_query(query, conn)
+
+    # Close the connection
+    conn.close()
+
+    # Convert the DataFrame to a dictionary to make it easier to work with in Flask
+    games_dict = df.to_dict('records')
+
+    # Return the games dictionary as JSON
+    return jsonify(games_dict)
+
+#Below code pulls all the games titles, genres, and ratings and sorts them by ratings in numerical descending order filtering all games with a rating of 4.0 or higher
+@app.route('/games/genreratings')
+#Define a new function
+def display_games_genreratings():
+    # Create a connection to the SQLite database
+    conn = sqlite3.connect('games.db')
+
+    # Query the 'games' table with any parameter you need
+    query = "SELECT Title, Genres, Rating FROM games WHERE Rating >= 4.0 ORDER BY Rating DESC;"
+    df = pd.read_sql_query(query, conn)
+
+    # Close the connection
+    conn.close()
+
+    # Convert the DataFrame to a dictionary to make it easier to work with in Flask
+    games_dict = df.to_dict('records')
+
+    # Return the games dictionary as JSON
+    return jsonify(games_dict)
 
 #Following code allows the user to input a number they want for the top played however many games they choose
 @app.route('/games/top/<int:num>')
