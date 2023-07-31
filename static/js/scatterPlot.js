@@ -65,4 +65,32 @@ d3.json('http://127.0.0.1:5000/games/reviews').then((data) => {
           },
         },
     });
-  });
+});
+
+// Function to highlight the selected game on the scatter plot
+function highlightGameOnScatterPlot(selectedGame) {
+  console.log(`Highlighting game: ${selectedGame}`); 
+
+  if (scatterChart) {
+      let datasetIndex = 0;
+      let dataset = scatterChart.data.datasets[datasetIndex];
+      let games = dataset.data;
+      let selectedGameIndex = games.findIndex(game => game.title === selectedGame);
+
+      console.log(`Found game at index: ${selectedGameIndex}`); 
+
+      if (selectedGameIndex !== -1) {
+          let point = scatterChart.getDatasetMeta(datasetIndex).data[selectedGameIndex];
+          point.custom = point.custom || {};
+          point.custom.backgroundColor = 'red';
+          scatterChart.update();
+      }
+  } else {
+      console.log('Chart not found'); 
+  }
+}
+
+function optionChanged(newSample) {
+  console.log(`Selected game: ${newSample}`); 
+  highlightGameOnScatterPlot(newSample);
+}

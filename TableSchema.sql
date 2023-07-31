@@ -13,11 +13,11 @@ CREATE TABLE IF NOT EXISTS public."Video Games"
     "Genres" character varying COLLATE pg_catalog."default",
     "Rating" character varying COLLATE pg_catalog."default",
     "Plays" character varying COLLATE pg_catalog."default",
-    "Playing" bigint COLLATE pg_catalog."default",
-    "Backlogs" bigint COLLATE pg_catalog."default",
-    "Wishlist" bigint COLLATE pg_catalog."default",
-    "Lists" bigint COLLATE pg_catalog."default",
-    "Reviews" bigint COLLATE pg_catalog."default",
+    "Playing" INT COLLATE pg_catalog."default",
+    "Backlogs" INT COLLATE pg_catalog."default",
+    "Wishlist" INT COLLATE pg_catalog."default",
+    "Lists" INT COLLATE pg_catalog."default",
+    "Reviews" INT COLLATE pg_catalog."default",
     CONSTRAINT "Index" PRIMARY KEY ("Index")
 );
 END;

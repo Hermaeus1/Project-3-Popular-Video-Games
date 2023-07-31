@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Popular Video Games</title>
-  <link rel="stylesheet" href="https://www.backloggd.com/games/lib/popular/">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -16,65 +16,41 @@
       <div class="col-md-12 jumbotron text-center">
         <h1>Popular Video Games Dashboard</h1>
         <p>Use the interactive charts below to explore the dataset!</p>
+        <div style="text-align: center;">
+          <img src="https://hips.hearstapps.com/hmg-prod/images/gridoffset-videogames-1-1585583517.jpg?crop=0.888888888888889xw:1xh;center,top&resize=1200:*" alt="VideoGames" height=200 width=400>
+        </div>
       </div>
     </div>
-    <div class="row">
+      <div class="row">
       <div class="col-md-2">
         <div class="well">
-          <h5>Video Game:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-          <h5>Genre:</h5>  
-          <select id="selDataset" onchange="optionChanged(this.value)">
-            <option value="adventure">Adventure</option>
-            <option value="arcade">Arcade</option>
-            <option value="brawler">Brawler</option>
-            <option value="card & board game">Card & Board Game</option>
-            <option value="fighting">Fighting</option>
-            <option value="indie">Indie</option>
-            <option value="moba">MOBA</option>
-            <option value="music">Music</option>
-            <option value="pinball">Pinball</option>
-            <option value="platform">Platform</option>
-            <option value="point-and-click">Point-and-Click</option>
-            <option value="quiz/trivia">Quiz/Trivia</option>
-            <option value="racing">Racing</option>
-            <option value="real time strategy">Real Time Strategy</option>
-            <option value="rpg">RPG</option>
-            <option value="shooter">Shooter</option>
-            <option value="simulator">Simulator</option>
-            <option value="sport">Sport</option>
-            <option value="strategy">Strategy</option>
-            <option value="tactical">Tactical</option>
-            <option value="turn based strategy">Turn Based Strategy</option>
-            <option value="visual novel">Visual novel</option></select>
-          <h5>Platform:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+          <label for="gameDropdown">Select a game:</label>
+          <select id="gameDropdown" onchange="optionChanged(this.value)"></select>
         </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Video Game Ratings:</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
+        <div id="panel">
+          <p>Genre: <span id="panelGenre"></span></p>
+          <p>Plays: <span id="panelPlays"></span></p>
         </div>
       </div>
-      <div class="col-md-5">
-        <div id="bar"></div>
+      <div class="col-md-12">
+        <canvas id="scatterPlot" height='100'></canvas>
       </div>
-      <div class="col-md-5">
-        <div id="gauge"></div>
+      <div class="col-md-12">
+        <canvas id="barChart" height='300'></canvas>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
-      </div>
     </div>
   </div>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="./static/js/app.js"></script>
-  <script src="./static/js/bonus.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-tooltip"></script>
+  <script src="js/app.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/scatterPlot.js"></script>
+  <script src="js/barChart.js"></script>
 
 </body>
 
