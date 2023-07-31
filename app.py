@@ -1,8 +1,10 @@
 from flask import Flask, jsonify
 import sqlite3
 import pandas as pd
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 #Below code pulls all the games by Title in alphabetical order
 @app.route('/games')

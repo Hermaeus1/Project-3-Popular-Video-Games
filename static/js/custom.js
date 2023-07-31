@@ -1,6 +1,7 @@
-// Event listener for the gameDropdown
-document.getElementById("gameDropdown").addEventListener("change", function () {
+  // Event listener for the gameDropdown
+  document.getElementById("gameDropdown").addEventListener("change", function () {
     const selectedGame = this.value; // Get the selected game title
+    console.log("Selected Game", selectedGame)
   
     // Use d3.json to fetch the JSON data
     d3.json('http://127.0.0.1:5000/games/genrevsplays')
